@@ -1,0 +1,14 @@
+markdown: rdiscount
+permalink: /:title/
+url: http://PPUrbain.github.io
+name: Urbain
+author: Urbain
+qq: 313662349
+email: apphe7@163.com
+duoshuo: 张棚贺Urbain
+weibo: apphe7@163.com
+github: PPUrbain
+pygments: true
+safe: true
+paginate: 15
+about: "喜欢互联网科技。"
