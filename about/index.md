@@ -4,7 +4,13 @@ layout: page
 comments: no
 
 ---
-<img src="/image/custom.jpg" alt="每日一图" />
+
+<p>
+<script type="text/javascript">
+	var d = new Date();
+　　document.write( "<img src=\"images/img" + d.getDay() + ".jpg\" alt=\"每日一图\" />" ); 
+</script>
+</p>
 
 <p style="text-align: center">
 人不只有一种颜色<br />
@@ -39,7 +45,7 @@ GitHub : [http://github.com/{{ site.github }}](http://github.com/{{ site.github 
 ----
 
 <p style="text-align:left">请关注我：</p>
-<img src="LOG1O.jpg" usemap="#map" alt="请关注我" />
+<img src="images/contextme.jpg" usemap="#map" alt="请关注我" />
 <map name="map" id="map">
 <area shape="rect" coords="0,0,130,130" href="http://weibo.com/qingkejin" target ="_blank" alt="新浪微博" />
 <area shape="rect" coords="130,0,265,130" href="http://t.qq.com/q313662349" target ="_blank" alt="腾讯微博" />
