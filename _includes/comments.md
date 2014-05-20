@@ -1,4 +1,4 @@
-{% if site.duoshuo %}
+{% if site.duoshuo and page.comments %}
 	{% if page.thread %}
 	<div class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
 	<div class="ds-thread" data-thread-key="{{ page.thread }}" data-url="{{ site.url }}{{ page.url }}" data-title="{{ page.title }}" />
@@ -10,7 +10,7 @@
 	(function() {
 		var ds = document.createElement('script');
 		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.unstable.js';
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
 		ds.charset = 'UTF-8';
 		(document.getElementsByTagName('head')[0] 
 		|| document.getElementsByTagName('body')[0]).appendChild(ds);
