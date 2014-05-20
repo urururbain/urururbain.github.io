@@ -1,13 +1,13 @@
 markdown: rdiscount
 permalink: /:title/
-url: http://PPUrbain.github.io
+url: http://urururbain.github.io
 name: Urbain
 author: Urbain
 qq: 313662349
 email: apphe7@163.com
 duoshuo: 张棚贺Urbain
 weibo: apphe7@163.com
-github: PPUrbain
+github: urururbain.github.io
 pygments: true
 safe: true
 paginate: 15
