@@ -2,8 +2,8 @@
 author: Urbain
 layout: post
 title:  "使用Github+Jekyll搭载个人博客"
-date:   2014-05-21
-categories: git jekyll
+date: 2014-05-21 13:22:39
+categories:  git jekyll
 comments: true
 thread: 2
 ---

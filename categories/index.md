@@ -1,5 +1,5 @@
 ---
-title: 分类
+title: 归档
 layout: page
 ---
 
