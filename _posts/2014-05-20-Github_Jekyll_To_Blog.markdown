@@ -1,0 +1,198 @@
+---
+author: Urbain
+layout: post
+title:  "使用Github+Jekyll搭载个人博客"
+date:   2014-05-21
+categories: git jekyll
+comments: true
+thread: 2
+---
+
+前言：第一次搞git，也是第一次做Blog，忙了两天时间才把本博客建好，当然也学到了很多知识，作为开博第二篇，我将以 “使用Github+Jekyll搭载个人博客” 为题写篇教程纪念，也方便后来人查看。初入Git，如有不明或勘误之处，敬请指出，感谢！ 
+
+*注：本教程适用于有编程经验的读者，同时了解html的读者会感到更加简单。*
+
+---
+---
+##第一步：认识Git，GitHub Pages，Jekyll
+---
+
+1. 什么是Git？  
+[Git](http://git-scm.com/)是一款自由和开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。
+
+2. 什么是Github？  
+[GitHub](http://github.com/)是一个面向开源及私有软件项目的托管平台，因为只支持Git作为唯一的版本库格式进行托管，故名GitHub。
+
+3. 什么是GitHub Pages？  
+[GitHub Pages](https://pages.github.com/)是一个更加专注于托管网页而非项目的免费平台，通过它我们可以快速而简单的发布我们的网站。
+
+4. 什么是Jekyll？  
+[Jekyll](http://jekyllrb.com/)是一个简单的免费的Blog生成工具，它是一个生成静态网页的工具，不需要数据库支持。但是可以配合第三方服务,例如discuz。最关键的是jekyll可以免费部署在Github上，而且可以绑定自己的域名。
+
+了解了上面的知识，我们也就明白了 “使用Github+Jekyll搭载个人博客” 的原理。这里，我们选择利用*GitHub二级域名+本地命令行*方式搭载博客。实践证明命令行方式避免了很多如编码等问题。  
+好了，废话不多说，Go！
+
+---
+##第二步：配置本地Git/Jekyll环境
+---
+
+我们完全可以把所有事情都放在GitHub上直接在线完成，当然为了更加自由和个性化以及其他某些原因，我们还应该在本地部署Git。  
+我们需要下载的有[Git](http://git-scm.com/), 你可以直接进入<http://git-scm.com/downloads>选择需要的版本下载。建议安装到C:\Git\下，这里我所用Git版本为windows下1.9.2版本。  
+![GitDown](\images\2014-05-20-images\GitDown.jpg)  
+![GitVersion](\images\2014-05-20-images\GitVersion.jpg)  
+为了避免总是上传后再查看效果，我们希望可以在本地预览博客仅当我们感到满意时再上传至GitHub，这样我们还需要配置Jekyll环境。**依次**安装Ruby、Devkit、Jekyll。
+
+这里博主下载的是[Ruby 1.9.1-p0 二进制](ftp://ftp.ruby-lang.org/pub/ruby/binaries/mswin32/ruby-1.9.1-p0-i386-mswin32.zip)，更新后目前版本为ruby-2.0.0-p481。当然了，我们可以直接进入<http://rubyinstaller.org/downloads/>选择需要的Ruby2.0.0-p481版本下载。建议安装到C:\Ruby\下。  
+![RubyDown](\images\2014-05-20-images\RubyDown.jpg)
+
+接下来下载Devkit，还是进入刚才的[RubyInstaller](http://rubyinstaller.org/downloads/)下，如上面下载的Ruby为2.0.0版本，那么这里应该下载[DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe(32bits version only)](http://211.136.10.52/videoplayer/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe?ich_u_r_i=30a965299eac270532859b718e57262a&ich_s_t_a_r_t=0&ich_e_n_d=0&ich_k_e_y=1445058920751663092446&ich_t_y_p_e=1&ich_d_i_s_k_i_d=4&ich_u_n_i_t=1)这个版本。如下载的Ruby为其他版本，选择相应版本的Devkit下载。建议安装到C:\Devkit\下。  
+![DevkitDown](\images\2014-05-20-images\DevkitDown.jpg)
+
+接下来安装Jekyll的方式与前面不同，因为要用到ruby，需要配置ruby环境变量，打开 我的电脑->属性->高级系统设置->环境变量，进入环境变量窗口：  
+**注：新建变量前最好检查有没有与将要建立的变量名重名的变量，如果有，新建时将变量名改个名字即可，或者在原变量名的变量值后加分号再添加路径。**  
+新建三个环境变量，其中所有路径应该按照实际路径添加。
+
+	变量名：Include   变量值：C:\ruby-2.0.0-p481-i386-mingw32\include;  
+	变量名：Lib       变量值：C:\ruby-2.0.0-p481-i386-mingw32\lib;  
+	变量名：Path      变量值：C:\ruby-2.0.0-p481-i386-mingw32\bin;  
+
+![environment](\images\2014-05-20-images\environment.jpg)
+
+打开控制台窗口（开始->运行->cmd），依次输入以下命令：
+
+    $ cd C:\DevKit-mingw   //这里的“DevKit-mingw”要改成你自己的devkit所在目录
+
+    $ ruby dk.rb init
+
+    $ ruby dk.rb install
+
+输入下面命令开始安装jekyll：
+
+    $ gem install jekyll
+
+另外额外安装rdiscount，用来解析markdown标记的解析包。
+
+    $ gem install rdiscount
+
+用查看版本号的方式检查jekyll是否安装完成：
+
+    $ jekyll -v    // 或者 jekyll -version 或者 jekyll --version 都可以的
+
+![JekyllVersion](\images\2014-05-20-images\JekyllVersion.png)
+
+---
+##第三步：这次真正要建立Blog了
+---
+
+首先，你需要一个GitHub账户，如果没有先进入<https://github.com/>注册，这里要注意一下，注册时“Pick a username”这个用户名也就是将来Blog的二级域名，也就是说将来的Blog域名为：username.giuhub.io，谨慎注册。建议用户名和邮箱名前缀相同，即username与username@somedomin.com
+
+登陆Github，点击右上角或右下角+new repository  
+![NewRepo1](\images\2014-05-20-images\NewRepo1.png)  
+![NewRepo2](\images\2014-05-20-images\NewRepo2.png)  
+
+ “Repository name” 填写 “username.github.io”， 这就是Blog主页，选上 “Initialize this repository with a README”  
+![NewRepo](\images\2014-05-20-images\NewRepo.jpg)  
+填好之后，Create！  
+选择右边的 “Settings”  
+![setting](\images\2014-05-20-images\setting.png)  
+下拉，在GitHub Pages一栏点击 “Automatic page generator”，进去之后直接continue，确定就好。等大概几分钟应该就会生成个人Blog了，这时可以通过username.github.io进行访问。（由于某种博主暂时也不清楚的原因，我们需要先用GitHub Pages的自动生成器生成一个可见网页，然后才能利用jekyll。）（网上流传包括Jekyll官网声明需要在gh_pages分支才可以声明网页，但其实在master也可以的）
+
+接下来，在本地打开Git，利用 git clone 命令克隆git仓库：
+
+	$ git clone https://github.com/username/username.github.io
+
+进入git仓库：
+
+	$ cd username.github.io
+
+设置全局用户名及邮箱：
+
+	$ git config --global user.name "username"   //注册时填写的用户名
+	$ git config --global user.email "username@somedomain.com"  //注册时填写的密码
+
+这时如果熟悉html，你可以试着修改index.html内容，然后在git下执行命令
+
+	$ git add --ignore-removal .	//将文件添加到缓存
+	$ git commit -a -m "say something"    // 提交时应该写简要说明
+	$ git push   // 正式提交。第一次使用git push命令可能会有提醒信息，回答即可。
+
+这里给出官方中文的Git参考手册：<http://gitref.org/zh/index.html>  ，更多git命令及说明请自行百度。
+
+至此完成了修改和提交的过程，以后每次写博文可以通过 本地修改+提交 或 直接GitHub在线写 即可。
+
+---
+##第四步：利用Jekyll及其他插件个性化Blog
+---
+
+细心的读者会发现，虽然我们已经花很长时间配置好了jekyll环境，但其实至此我们还完全没有用到Jekyll！
+
+如果你不喜欢自己做的主题，那么好，GitHub已经有很多精美的Jekyll主题，更重要的是这些是完全开源的。我们可以利用git clone命令克隆任何一个我们想要的主题，在知乎上也有关于jekyll主题的问题：<http://www.zhihu.com/question/20223939>。
+
+clone方法：你先要进入喜欢的主题博客，在页面最下面会有类似Powered by github，点击github就会进入博主的github，后面就不用说了，放心去clone吧~
+
+成功clone后，可以把clone下来的文件拷到自己博客目录下，当然一定要记得修改\_config\.yml等文件，同时记得删除原作者博文。
+
+插一段Jekyll网站的目录结构说明：  
+一个基本的 Jekyll 网站的目录结构一般是像这样的：
+
+	.
+	├── _config.yml         //保存配置数据，clone后需要修改
+	├── _drafts             //未发布的文章，clone后如果没有不用修改
+	|   ├── begin-with-the-crazy-ideas.textile
+	|   └── on-simplicity-in-technology.markdown
+	├── _includes           //加载到layouts或posts中方便重用，clone后不建议修改
+	|   ├── footer.html
+	|   └── header.html
+	├── _layouts            //包裹在文章外部的模板，clone后可以修改
+	|   ├── default.html
+	|   └── post.html
+	├── _posts              //发布的文章，clone后需要删除里面内容
+	|   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
+	|   └── 2009-04-26-barcamp-boston-4-roundup.textile
+	├── _site               //经过jekyll转换生成的页面，clone后不用修改
+	└── index.html           //主页，clone后可以修改
+
+来具体看看这些都有什么用：  
+_config.yml  
+保存配置数据。很多[配置](http://jekyllcn.com/docs/configuration/)选项都会直接从命令行中进行设置，但是如果你把那些配置写在这儿，你就不用非要去记住那些命令了。
+
+_drafts  
+drafts 是未发布的文章。这些文件的格式中都没有 title.MARKUP 数据。学习如何使用[drafts](http://jekyllcn.com/docs/drafts/)。
+
+_includes  
+你可以加载这些包含部分到你的布局或者文章中以方便重用。可以用这个标签  \{ % include file.ext %\} 来把文件 _includes/file.ext 包含进来。
+
+_layouts  
+layouts 是包裹在文章外部的模板。布局可以在[YAML头信息](http://jekyllcn.com/docs/frontmatter/)中根据不同文章进行选择。 这将在下一个部分进行介绍。标签 \{\{ content \}\} 可以将content插入页面中。
+
+_posts  
+这里放的就是你的文章了。文件格式很重要，必须要符合: YEAR-MONTH-DAY-title.MARKUP。 The [permalinks](http://jekyllcn.com/docs/permalinks/) 可以在文章中自己定制，但是数据和标记语言都是根据文件名来确定的。
+
+_site  
+一旦 Jekyll 完成转换，就会将生成的页面放在这里（默认）。最好将这个目录放进你的 .gitignore 文件中。
+
+index.html and other HTML, Markdown, Textile files  
+如果这些文件中包含[YAML头信息](http://jekyllcn.com/docs/frontmatter/)部分，Jekyll 就会自动将它们进行转换。当然，其他的如 xxx.html， xxx.markdown， xxx.md，或者 xxx.textile 等在你的站点根目录下或者不是以上提到的目录中的文件也会被转换。
+
+Other Files/Folders  
+其他一些未被提及的目录和文件如  css 还有 images 文件夹， favicon.ico 等文件都将被完全拷贝到生成的 site 中。 这里有一些使用 [Jekyll 的站点](http://jekyllcn.com/docs/sites/)，如果你感兴趣就来看看吧。
+
+通过clone的方式会发现最终效果不尽人意，比如可能会失去作文原有的博文评论功能，推荐用多说评论，或者disqus，其中利用多说评论的方法很简单，只要把多说生成的一段代码拷到相应位置就OK。还有其他某些设置自己摸索着学习吧。
+
+在本地预览效果利用jekyll serve命令，然后打开浏览器输入<http://127.0.0.1:4000/> 就可以预览了（命令行提示是http://0.0.0.0:4000/，但实践证明0.0.0.0::4000是不能进入预览的）。
+![JekyllServe](\images\2014-05-20-images\JekyllServe.png) 
+
+效果满意之后就可以git add/commit/push ！
+
+---
+##附：参考资料
+---
+
+GitHub Pages Help：<https://help.github.com/categories/20/articles>
+
+Git参考手册：<http://gitref.org/zh/index.html>
+
+[将材柳裟](http://blog.jsfor.com/)博文：[windows下本地jekyll博客搭建手记](http://blog.jsfor.com/skill/2013/09/07/jekyll-local-structures-notes/)
+
+[阮一峰](http://www.ruanyifeng.com/)博文：[搭建一个免费的，无限流量的Blog----github Pages和Jekyll入门](http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html)
+
