@@ -3,9 +3,10 @@ author: Urbain
 layout: post
 title:  "使用Github+Jekyll搭载个人博客"
 date: 2014-05-21 13:22:39
-categories:  git jekyll
+categories: 教程
 comments: true
 thread: 2
+tags: git jekyll
 ---
 
 前言：第一次搞git，也是第一次做Blog，忙了两天时间才把本博客建好，当然也学到了很多知识，作为开博第二篇，我将以 “使用Github+Jekyll搭载个人博客” 为题写篇教程纪念，也方便后来人查看。初入Git，如有不明或勘误之处，敬请指出，感谢！ 
