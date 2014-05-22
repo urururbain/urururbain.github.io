@@ -185,9 +185,11 @@ Other Files/Folders
 
 1. 中文乱码编码问题  
 建议用命令行即Git Bash方式进行工作，不要用Git GUI，所有文本用utf-8编码，所有文件名用英文。  
-中文乱码问题参考：<http://www.oschina.net/question/1396651_132154>
+中文乱码问题参考文章：  
+<http://www.oschina.net/question/1396651_132154>  
+<http://yanping.me/cn/blog/2012/10/09/chinese-charset-problems-with-jekyll/>
 
-2. 预览是应用jekyll serve命令出错  
+2. 预览时调用 jekyll serve 命令出错  
 注意看错误提示，有可能是文件修改问题，比如没有修改好_config.yml文件，没有删除原博文，或者其他地方没有修改。  
 也有可能是没有 gem install rdiscount。
 
@@ -199,7 +201,8 @@ GitHub Pages Help：<https://help.github.com/categories/20/articles>
 
 Git参考手册：<http://gitref.org/zh/index.html>
 
-[将材柳裟](http://blog.jsfor.com/)博文：[windows下本地jekyll博客搭建手记](http://blog.jsfor.com/skill/2013/09/07/jekyll-local-structures-notes/)
+[将材柳裟](http://blog.jsfor.com/)的博文：[windows下本地jekyll博客搭建手记](http://blog.jsfor.com/skill/2013/09/07/jekyll-local-structures-notes/)
 
-[阮一峰](http://www.ruanyifeng.com/)博文：[搭建一个免费的，无限流量的Blog----github Pages和Jekyll入门](http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html)
+[阮一峰](http://www.ruanyifeng.com/)的博文：[搭建一个免费的，无限流量的Blog----github Pages和Jekyll入门](http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html)
 
+[天镶](http://skyinlayer.com/)的博文：[使用jekyll搭建github博客系列](http://skyinlayer.com/#/art/blog/2014/02/06/jekyll-4)
