@@ -10,7 +10,8 @@ thread: 2
 
 前言：第一次搞git，也是第一次做Blog，忙了两天时间才把本博客建好，当然也学到了很多知识，作为开博第二篇，我将以 “使用Github+Jekyll搭载个人博客” 为题写篇教程纪念，也方便后来人查看。初入Git，如有不明或勘误之处，敬请指出，感谢！ 
 
-*注：本教程适用于有编程经验的读者，同时了解html的读者会感到更加简单。*
+**注：本教程适用于有编程经验的读者，同时了解html的读者会感到更加简单。**  
+**注：本教程最后更正日期：2014-05-22**
 
 ---
 ---
@@ -27,7 +28,7 @@ thread: 2
 [GitHub Pages](https://pages.github.com/)是一个更加专注于托管网页而非项目的免费平台，通过它我们可以快速而简单的发布我们的网站。
 
 4. 什么是Jekyll？  
-[Jekyll](http://jekyllrb.com/)是一个简单的免费的Blog生成工具，它是一个生成静态网页的工具，不需要数据库支持。但是可以配合第三方服务,例如discuz。最关键的是jekyll可以免费部署在Github上，而且可以绑定自己的域名。
+[Jekyll](http://jekyllrb.com/)官方解释为“Transform your plain text into static websites and blogs”，它是一个生成静态网页的工具，不需要数据库支持。但是可以配合第三方服务,例如discuz。最关键的是jekyll可以免费部署在Github上，而且可以绑定自己的域名。
 
 了解了上面的知识，我们也就明白了 “使用Github+Jekyll搭载个人博客” 的原理。这里，我们选择利用*GitHub二级域名+本地命令行*方式搭载博客。实践证明命令行方式避免了很多如编码等问题。  
 好了，废话不多说，Go！
@@ -37,26 +38,19 @@ thread: 2
 ---
 
 我们完全可以把所有事情都放在GitHub上直接在线完成，当然为了更加自由和个性化以及其他某些原因，我们还应该在本地部署Git。  
-我们需要下载的有[Git](http://git-scm.com/), 你可以直接进入<http://git-scm.com/downloads>选择需要的版本下载。建议安装到C:\Git\下，这里我所用Git版本为windows下1.9.2版本。  
+我们需要下载的有[Git](http://git-scm.com/), 你可以直接进入<http://git-scm.com/downloads>选择需要的版本下载。这里我所用Git版本为windows下1.9.2版本。  
 ![GitDown](\images\2014-05-20-images\GitDown.jpg)  
 ![GitVersion](\images\2014-05-20-images\GitVersion.jpg)  
 为了避免总是上传后再查看效果，我们希望可以在本地预览博客仅当我们感到满意时再上传至GitHub，这样我们还需要配置Jekyll环境。**依次**安装Ruby、Devkit、Jekyll。
 
-这里博主下载的是[Ruby 1.9.1-p0 二进制](ftp://ftp.ruby-lang.org/pub/ruby/binaries/mswin32/ruby-1.9.1-p0-i386-mswin32.zip)，更新后目前版本为ruby-2.0.0-p481。当然了，我们可以直接进入<http://rubyinstaller.org/downloads/>选择需要的Ruby2.0.0-p481版本下载。建议安装到C:\Ruby\下。  
+这里最新版本为ruby-2.0.0-p481。我们可以直接进入<http://rubyinstaller.org/downloads/>选择需要的Ruby版本下载。**在安装时要勾选添加到环境变量**，也就是点选“Add Ruby executables to your PATH”。  
 ![RubyDown](\images\2014-05-20-images\RubyDown.jpg)
+![RubyInstalll](\images\2014-05-20-images\RubyInstall.png)
 
-接下来下载Devkit，还是进入刚才的[RubyInstaller](http://rubyinstaller.org/downloads/)下，如上面下载的Ruby为2.0.0版本，那么这里应该下载[DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe(32bits version only)](http://211.136.10.52/videoplayer/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe?ich_u_r_i=30a965299eac270532859b718e57262a&ich_s_t_a_r_t=0&ich_e_n_d=0&ich_k_e_y=1445058920751663092446&ich_t_y_p_e=1&ich_d_i_s_k_i_d=4&ich_u_n_i_t=1)这个版本。如下载的Ruby为其他版本，选择相应版本的Devkit下载。建议安装到C:\Devkit\下。  
+接下来下载Devkit，还是进入刚才的[RubyInstaller](http://rubyinstaller.org/downloads/)下，如上面下载的Ruby为2.0.0版本，那么这里应该下载[DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe(32bits version only)](http://211.136.10.52/videoplayer/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe?ich_u_r_i=30a965299eac270532859b718e57262a&ich_s_t_a_r_t=0&ich_e_n_d=0&ich_k_e_y=1445058920751663092446&ich_t_y_p_e=1&ich_d_i_s_k_i_d=4&ich_u_n_i_t=1)这个版本。如Ruby为其他版本，选择相应版本的Devkit下载。  
 ![DevkitDown](\images\2014-05-20-images\DevkitDown.jpg)
 
-接下来安装Jekyll的方式与前面不同，因为要用到ruby，需要配置ruby环境变量，打开 我的电脑->属性->高级系统设置->环境变量，进入环境变量窗口：  
-**注：新建变量前最好检查有没有与将要建立的变量名重名的变量，如果有，新建时将变量名改个名字即可，或者在原变量名的变量值后加分号再添加路径。**  
-新建三个环境变量，其中所有路径应该按照实际路径添加。
-
-	变量名：Include   变量值：C:\ruby-2.0.0-p481-i386-mingw32\include;  
-	变量名：Lib       变量值：C:\ruby-2.0.0-p481-i386-mingw32\lib;  
-	变量名：Path      变量值：C:\ruby-2.0.0-p481-i386-mingw32\bin;  
-
-![environment](\images\2014-05-20-images\environment.jpg)
+因为Jekyll是运行在ruby下，还需要配置ruby环境变量，但我们前面在安装Ruby时选择了 “Add Ruby executables to your PATH” ，所以不必担心这个问题，继续。(因为有人可能忘记了选择添加环境变量导致后面出错，再来提醒一次)
 
 打开控制台窗口（开始->运行->cmd），依次输入以下命令：
 
@@ -95,9 +89,9 @@ thread: 2
 填好之后，Create！  
 选择右边的 “Settings”  
 ![setting](\images\2014-05-20-images\setting.png)  
-下拉，在GitHub Pages一栏点击 “Automatic page generator”，进去之后直接continue，确定就好。等大概几分钟应该就会生成个人Blog了，这时可以通过username.github.io进行访问。（由于某种博主暂时也不清楚的原因，我们需要先用GitHub Pages的自动生成器生成一个可见网页，然后才能利用jekyll。）（网上流传包括Jekyll官网声明需要在gh_pages分支才可以声明网页，但其实在master也可以的）
+下拉，在GitHub Pages一栏点击 “Automatic page generator”，进去之后直接continue，确定就好。等大概几分钟应该就会生成个人Blog了，这时可以通过username.github.io进行访问。（由于某种博主暂时也不清楚的原因，我们需要先用GitHub Pages的自动生成器生成一个可见网页，然后才能利用jekyll。）（网上流传的包括Jekyll官网也声明需要在gh_pages分支才可以声明网页，但其实在master下也可以的。没有接触过git的读者可能不清楚分支是什么，新建的git仓库默认分支名称为master，也就是说我们这里一直在master里面工作，所以就算不明白也不必担心这个问题。）
 
-接下来，在本地打开Git，利用 git clone 命令克隆git仓库：
+接下来，在本地打开Git，利用 git clone 命令克隆git仓库，命令下的链接要改为自己在github下仓库的链接：
 
 	$ git clone https://github.com/username/username.github.io
 
@@ -108,7 +102,7 @@ thread: 2
 设置全局用户名及邮箱：
 
 	$ git config --global user.name "username"   //注册时填写的用户名
-	$ git config --global user.email "username@somedomain.com"  //注册时填写的密码
+	$ git config --global user.email "username@somedomain.com"  //注册时填写的邮箱
 
 这时如果熟悉html，你可以试着修改index.html内容，然后在git下执行命令
 
@@ -126,11 +120,11 @@ thread: 2
 
 细心的读者会发现，虽然我们已经花很长时间配置好了jekyll环境，但其实至此我们还完全没有用到Jekyll！
 
-如果你不喜欢自己做的主题，那么好，GitHub已经有很多精美的Jekyll主题，更重要的是这些是完全开源的。我们可以利用git clone命令克隆任何一个我们想要的主题，在知乎上也有关于jekyll主题的问题：<http://www.zhihu.com/question/20223939>。
+那么好，我们开始Jekyll化我们的博客，GitHub已经有很多精美的Jekyll主题，更重要的是这些是完全开源的。我们可以利用git clone命令克隆任何一个我们想要的主题，在知乎上也有关于jekyll主题的问题：<http://www.zhihu.com/question/20223939>，更多主题自行百度。
 
-clone方法：你先要进入喜欢的主题博客，在页面最下面会有类似Powered by github，点击github就会进入博主的github，后面就不用说了，放心去clone吧~
+clone方法：你先要进入喜欢的主题博客，在页面最下面会有类似Powered by github，点击github就会进入博主的github，复制下链接，同样利用上一步的git clone命令就可以clone了~
 
-成功clone后，可以把clone下来的文件拷到自己博客目录下，当然一定要记得修改\_config\.yml等文件，同时记得删除原作者博文。
+成功clone后，可以把clone下来的文件拷到自己博客目录下，**当然一定要记得修改\_config\.yml等文件，同时记得删除原作者博文。**
 
 插一段Jekyll网站的目录结构说明：  
 一个基本的 Jekyll 网站的目录结构一般是像这样的：
@@ -177,15 +171,27 @@ index.html and other HTML, Markdown, Textile files
 Other Files/Folders  
 其他一些未被提及的目录和文件如  css 还有 images 文件夹， favicon.ico 等文件都将被完全拷贝到生成的 site 中。 这里有一些使用 [Jekyll 的站点](http://jekyllcn.com/docs/sites/)，如果你感兴趣就来看看吧。
 
-通过clone的方式会发现最终效果不尽人意，比如可能会失去作文原有的博文评论功能，推荐用多说评论，或者disqus，其中利用多说评论的方法很简单，只要把多说生成的一段代码拷到相应位置就OK。还有其他某些设置自己摸索着学习吧。
+通过clone的方式会发现最终效果不尽人意，比如可能会失去坐着原有的博文评论功能，推荐用多说评论，或者disqus，其中利用多说评论的方法很简单，只要把多说生成的一段代码拷到相应位置就OK。还有其他某些设置自己摸索着学习吧。
 
-在本地预览效果利用jekyll serve命令，然后打开浏览器输入<http://127.0.0.1:4000/> 就可以预览了（命令行提示是http://0.0.0.0:4000/，但实践证明0.0.0.0::4000是不能进入预览的）。
+在本地预览效果利用jekyll serve命令，然后打开浏览器输入 <http://127.0.0.1:4000/> 或者 <localhost:4000> 就可以预览了（命令行可能会提示输入http://0.0.0.0:4000/，但实践证明0.0.0.0:4000是不能进入预览的）。
 ![JekyllServe](\images\2014-05-20-images\JekyllServe.png) 
 
 效果满意之后就可以git add/commit/push ！
 
 ---
-##附：参考资料
+##附一：常见问题及解决方法
+---
+
+1. 中文乱码编码问题  
+建议用命令行即Git Bash方式进行工作，不要用Git GUI，所有文本用utf-8编码，所有文件名用英文。  
+中文乱码问题参考：<http://www.oschina.net/question/1396651_132154>
+
+2. 预览是应用jekyll serve命令出错  
+注意看错误提示，有可能是文件修改问题，比如没有修改好_config.yml文件，没有删除原博文，或者其他地方没有修改。  
+也有可能是没有 gem install rdiscount。
+
+---
+##附二：参考资料
 ---
 
 GitHub Pages Help：<https://help.github.com/categories/20/articles>
