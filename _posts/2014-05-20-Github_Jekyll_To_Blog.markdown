@@ -5,8 +5,8 @@ title:  "使用Github+Jekyll搭载个人博客"
 date: 2014-05-21 13:22:39
 categories: 教程
 comments: true
-thread: 2
 tags: git jekyll
+thread: 2
 ---
 
 前言：第一次搞git，也是第一次做Blog，忙了两天时间才把本博客建好，当然也学到了很多知识，作为开博第二篇，我将以 “使用Github+Jekyll搭载个人博客” 为题写篇教程纪念，也方便后来人查看。初入Git，如有不明或勘误之处，敬请指出，感谢！ 
@@ -174,7 +174,7 @@ Other Files/Folders
 
 通过clone的方式会发现最终效果不尽人意，比如可能会失去坐着原有的博文评论功能，推荐用多说评论，或者disqus，其中利用多说评论的方法很简单，只要把多说生成的一段代码拷到相应位置就OK。还有其他某些设置自己摸索着学习吧。
 
-在本地预览效果利用jekyll serve命令，然后打开浏览器输入 <http://127.0.0.1:4000/> 或者 <localhost:4000> 就可以预览了（命令行可能会提示输入http://0.0.0.0:4000/，但实践证明0.0.0.0:4000是不能进入预览的）。
+在本地预览效果利用jekyll serve命令，然后打开浏览器输入 <http://127.0.0.1:4000/> 或者 [localhost:4000](localhost:4000) 就可以预览了（命令行可能会提示输入http://0.0.0.0:4000/，但实践证明0.0.0.0:4000是不能进入预览的）。
 ![JekyllServe](\images\2014-05-20-images\JekyllServe.png) 
 
 效果满意之后就可以git add/commit/push ！
