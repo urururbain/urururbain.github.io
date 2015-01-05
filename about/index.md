@@ -50,7 +50,7 @@ GitHub : [http://github.com/{{ site.github }}](http://github.com/{{ site.github 
 <area shape="rect" coords="0,0,130,130" href="http://weibo.com/qingkejin" target ="_blank" alt="新浪微博" />
 <area shape="rect" coords="130,0,265,130" href="http://t.qq.com/q313662349" target ="_blank" alt="腾讯微博" />
 <area shape="rect" coords="265,0,400,130" href="http://www.renren.com/457190463" target ="_blank" alt="人人网" />
-<area shape="rect" coords="400,0,530,130" href="http://www.zhihu.com/people/zealph" target ="_blank" alt="知乎网" />
+<area shape="rect" coords="400,0,530,130" href="http://www.zhihu.com/people/zhangpenghe" target ="_blank" alt="知乎网" />
 </map>
 </div>
 
