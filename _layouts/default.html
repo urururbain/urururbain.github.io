@@ -8,6 +8,15 @@
     <link href="/feed/" rel="alternate" title="{{ site.author }}" type="application/atom+xml" />
     <link rel="stylesheet" href="/media/css/style.css" />
     <link rel="stylesheet" href="/media/css/highlight.css" />
+    <style type="text/css">
+        a#btt{position:fixed;bottom:5px;right:5px;
+            transition: opacity 0.5s;
+            -moz-transition: opacity 0.5s;  /* Firefox 4 */
+            -webkit-transition: opacity 0.5s;   /* Safari 和 Chrome */
+            -o-transition: opacity 0.5s;    /* Opera */
+            opacity:0.3}
+        a#btt:hover{opacity: 1.0}
+    </style>
     <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="/media/js/outliner.js"></script>
   </head>
@@ -71,7 +80,7 @@ var Swiftype = window.Swiftype || {};
         <article class="content">
         {{ content }}
         </article>
-        <a style="position:fixed;bottom:5px;right:5px;" href="#" title="Back to Top">
+        <a id="btt" style="position:fixed;bottom:5px;right:5px;" href="#" title="Back to Top">
             <img src="/assets/btt.png" />
         </a> 
       </div>
