@@ -14,6 +14,8 @@ thread: 2
 **注：本教程适用于有编程经验的读者，同时了解html的读者会感到更加简单。**  
 **注：本教程最后更正日期：2014-11-05**
 
+**2015/9/20**更新：最近重新配置本地环境，Windows10系统下安装git/ruby等均为64位版本，均可正常使用。
+
 ---
 ---
 ##第一步：认识Git，GitHub Pages，Jekyll
@@ -172,9 +174,9 @@ index.html and other HTML, Markdown, Textile files
 Other Files/Folders  
 其他一些未被提及的目录和文件如  css 还有 images 文件夹， favicon.ico 等文件都将被完全拷贝到生成的 site 中。 这里有一些使用 [Jekyll 的站点](http://jekyllcn.com/docs/sites/)，如果你感兴趣就来看看吧。
 
-通过clone的方式会发现最终效果不尽人意，比如可能会失去坐着原有的博文评论功能，推荐用多说评论，或者disqus，其中利用多说评论的方法很简单，只要把多说生成的一段代码拷到相应位置就OK。还有其他某些设置自己摸索着学习吧。
+通过 clone 的方式会发现最终效果不尽人意，比如可能会失去坐着原有的博文评论功能，推荐用多说评论，或者 disqus，其中利用多说评论的方法很简单，只要把多说生成的一段代码拷到相应位置就OK。还有其他某些设置自己摸索着学习吧。
 
-在本地预览效果利用jekyll serve命令，然后打开浏览器输入 <http://127.0.0.1:4000/> 或者 [localhost:4000](localhost:4000) 就可以预览了（命令行可能会提示输入http://0.0.0.0:4000/，但实践证明0.0.0.0:4000是不能进入预览的）。
+在本地预览效果利用 jekyll serve 命令，然后打开浏览器输入 [localhost:4000](localhost:4000) 就可以预览了（命令行可能会提示输入<http://0.0.0.0:4000/>或<http://127.0.0.1:4000/>，但实践证明是不能进入预览的）。
 ![JekyllServe](\images\2014-05-20-images\JekyllServe.png) 
 
 效果满意之后就可以git add/commit/push ！
@@ -192,6 +194,14 @@ Other Files/Folders
 2. 预览时调用 jekyll serve 命令出错  
 注意看错误提示，有可能是文件修改问题，比如没有修改好_config.yml文件，没有删除原博文，或者其他地方没有修改。  
 也有可能是没有 gem install rdiscount。
+
+3.使用gem install jekyll命令时出错，错误信息为：
+
+	ERROR:  While executing gem ... (Gem::RemoteFetcher::FetchError)
+    Errno::ECONNABORTED: An established connection was aborted by the software in your host machine. - SSL_connect (https://api.rubygems.org/specs.4.8.gz)
+
+原因：由于国内某种原因gem可能被屏蔽。  
+解决方法：切换gem源为国内源，比如淘宝的镜像(<http://ruby.taobao.org/>)很稳定。
 
 ---
 ##附二：参考资料
