@@ -8,7 +8,7 @@
 			eval(js.value);
 		}
                 window.onresize = function (){
-                        var h = document.body.scrollHeight;
+                        var h = document.body.clientHeight;
                         document.getElementById('textarea').style.height = h - 300 + 'px';
                         document.getElementById('button').style.top = h -290 + 'px';
                 }
