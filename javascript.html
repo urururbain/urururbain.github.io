@@ -8,18 +8,14 @@
 			eval(js.value);
 		}
                 window.onresize = function (){
-                        var h = window.screen.availHeight;
+                        var h = document.body.scrollHeight;
                         document.getElementById('textarea').style.height = h - 300 + 'px';
                         document.getElementById('button').style.top = h -290 + 'px';
                 }
-
-                var h = window.screen.availHeight;
-                document.getElementById('textarea').style.height = h - 300 + 'px';
-                document.getElementById('button').style.top = h -290 + 'px';
 	</script>
 </head>
 <body>
-		<textarea id="textarea" style="position:fixed; left:0px; top:0px; width:100%; font-size:36px"></textarea>
-		<button id="button" style="position:fixed; left:0px; width:100%; height:280px" onclick="on_button_click()">运行js</button>
+		<textarea id="textarea" style="position:fixed; left:0px; top:0px; width:100%; height:690px; font-size:36px"></textarea>
+		<button id="button" style="position:fixed; left:0px; top:700px; width:100%; height:280px" onclick="on_button_click()">运行js</button>
 </body>
 </html>
