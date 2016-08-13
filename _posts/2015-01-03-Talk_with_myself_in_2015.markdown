@@ -1,13 +1,4 @@
----
-author: Urbain
-layout: post
-title:  "2014，深夜里和自己谈谈"
-date: 2015-01-03 01:24:05
-categories: 日记
-comments: true
-tags: 心情
-thread: 4
----
+
 
 （刚关机时出了点问题，笔记本蓝屏了没有正常关掉。随便披一件衣服爬起来...）
 
